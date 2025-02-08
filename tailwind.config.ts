@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        Qwitcher: ["Qwitcher Grypen", "cursive"]
+        switzer: ['"Switzer"', 'sans-serif']
       },
       colors: {
         background: "var(--background)",
