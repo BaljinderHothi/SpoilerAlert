@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
 import cv2
 import numpy as np
@@ -10,61 +10,43 @@ CORS(app)
 
 model = YOLO("runs/detect/train2/weights/last.pt")
 
-labels_dict = {0: 'apple', 1: 'banana', 2: 'broccoli', 3: 'carrot', 4: 'cucumber', 5: 'kiwi', 6: 'lemon', 7: 'onion', 8: 'orange', 9: 'tomato'}
+labels_dict = {0: 'apple', 1: 'banana', 2: 'broccoli', 3: 'carrot', 4: 'cucumber',
+               5: 'kiwi', 6: 'lemon', 7: 'onion', 8: 'orange', 9: 'tomato'}
+
+cap = cv2.VideoCapture(0)
+
 @app.route('/')
 def home():
     return "Welcome to the Object Detection API!"
-@app.route('/detect', methods=['POST'])
-@app.route('/detect', methods=['POST'])
-def detect():
-    data = request.json
-    frame_data = data.get("frame")
 
-    if not frame_data:
-        return jsonify({"error": "No frame provided"}), 400
+def generate_frames():
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
 
-    try:
-        # Extract the base64 data (remove the "data:image/jpeg;base64," prefix)
-        if "," in frame_data:
-            frame_data = frame_data.split(",")[1]
-
-        # Add padding if necessary
-        padding = len(frame_data) % 4
-        if padding:
-            frame_data += "=" * (4 - padding)
-
-        # Decode the base64 image data
-        frame_bytes = base64.b64decode(frame_data)
-        np_arr = np.frombuffer(frame_bytes, np.uint8)
-        frame = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-
-        if frame is None:
-            print("Failed to decode image. Invalid or corrupted image data.")  # Debug statement
-            return jsonify({"error": "Failed to decode image"}), 400
-
-        # Perform object detection
         predictions = model.predict(frame, conf=0.4)
-        yolo_boxes = predictions[0].boxes
+        boxes = predictions[0].boxes
 
-        detected_objects = []
-
-        for box in yolo_boxes:
+        for box in boxes:
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             cls = int(box.cls[0])
             conf = float(box.conf[0])
             label = labels_dict.get(cls, f"Class {cls}")
 
-            detected_objects.append({
-                "label": label,
-                "confidence": conf,
-                "bbox": [x1, y1, x2, y2]  # Return bounding box coordinates
-            })
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.putText(frame, f"{label} ({conf:.2f})", (x1, y1 - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-        return jsonify({"objects": detected_objects})
+        _, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
 
-    except Exception as e:
-        print("Error:", e)  # Debug statement
-        return jsonify({"error": str(e)}), 500
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

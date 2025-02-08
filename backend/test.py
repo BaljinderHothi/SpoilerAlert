@@ -3,7 +3,7 @@ from ultralytics import YOLO
 
 model = YOLO("runs/detect/train2/weights/last.pt")
 
-labels = {0: 'bell_pepper', 1: 'cabbage', 2: 'carrot', 3: 'cucumber', 4: 'egg', 5: 'garlic', 6: 'potato', 7: 'tomato'}
+labels = {0: 'apple', 1: 'banana', 2: 'broccoli', 3: 'carrot', 4: 'cucumber', 5: 'kiwi', 6: 'lemon', 7: 'onion', 8: 'orange', 9: 'tomato'}
 
 cap = cv2.VideoCapture(0)
 
