@@ -110,6 +110,12 @@ const Camera: React.FC<CameraProps> = ({ setObject }) => {
       <div className="absolute top-2 left-2 bg-white p-2 rounded-md text-gray-800 text-sm font-semibold">
         {isStreaming ? "Detecting..." : "Camera Off"}
       </div>
+
+        {/* Side bar for showing the information regarding recalls for a certain prodcut */}
+      <div className="absolute top-2 right-2 bg-white p-2 rounded-md text-gray-800 text-sm font-semibold">
+        {/* ping the api */}
+        
+      </div>
     </div>
   );
 };
