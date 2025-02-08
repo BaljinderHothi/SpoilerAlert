@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SpoilerAlert 🔍🥕
 
-## Getting Started
+**Don't let recalls spoil your day.**
 
-First, run the development server:
+## What's This All About?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Have you ever gone shopping and almost bought recalled food, or discovered that item sitting in your fridge was part of a recent recall? With recalls becoming more frequent these days, we needed a better solution than manually checking barcodes or scrolling through endless FDA lists. That's why we created SpoilerAlert ; because we don't want recalls to spoil your day! Using computer vision and FDA's recall database, SpoilerAlert lets you quickly scan any food item to check if it's safe to buy or eat. Simple, fast, and reliable food safety right at your fingertips.
+## Core Features 🌟
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Smart Scan**: Point your camera at any food product, and we'll tell you if it's been recalled
+- **Real-time FDA Checks**: Direct integration with FDA's API for up-to-the-minute recall information
+- **Community Grocery Finder**: Found something good? Share the store location with other shoppers
+- **Shopping History**: Keep track of your scanned items and where you found them
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack 💻
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js for that smooth, fast user experience
+- MongoDB Atlas keeping track of all your grocery discoveries
+- Computer Vision magic to identify products
+- FDA API integration for real-time recall data
+- Vercel deployment for reliable hosting
+- Custom domain through GoDaddy
 
-## Learn More
+## Why SpoilerAlert? 🤔
 
-To learn more about Next.js, take a look at the following resources:
+Ever grabbed something off the shelf without realizing it's been recalled? We have (looking at you, Target carrots). SpoilerAlert makes sure you never have to worry about that again. Plus, with our community feature, you can help others find the good stuff when it's in stock.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Getting Started 🚀
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Visit [spoileralert.com](https://spoileralert.com) ***THIS IS A PLACE HOLDER***
+2. Allow camera access
+3. Scan any food product
+4. Shop with confidence!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## The Team 👥
+
+***ADD THE GROUP LINKEDIN AND GITHUBS HERE AND PORTFOLIOS***
+
+
+## License 📄
+
+MIT License - See [LICENSE.md](LICENSE.md) for details
+
+---
+
+*Food safety shouldn't be a surprise* 🛒✨
