@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        Qwitcher: ["Qwitcher Grypen", "cursive"]
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
