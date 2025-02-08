@@ -27,7 +27,7 @@ Ever grabbed something off the shelf without realizing it's been recalled? We ha
 
 ## Getting Started 🚀
 
-1. Visit [spoileralert.com](https://spoileralert.com) ***THIS IS A PLACE HOLDER***
+1. Visit [spoileralert.nyc](https://spoileralert.nyc) 
 2. Allow camera access
 3. Scan any food product
 4. Shop with confidence!
@@ -36,7 +36,19 @@ Ever grabbed something off the shelf without realizing it's been recalled? We ha
 
 ## The Team 👥
 
-***ADD THE GROUP LINKEDIN AND GITHUBS HERE AND PORTFOLIOS***
+
+- **Baljinder H**  
+  [LinkedIn](https://www.linkedin.com/in/baljinder-hothi/) | [GitHub](https://github.com/BaljinderHothi)
+
+- **Ishmam F.**  
+  [LinkedIn](https://www.linkedin.com/in/ishmam-fardin/) | [GitHub](https://github.com/IshmamF)
+
+- **Jay P.**  
+  [LinkedIn](https://www.linkedin.com/in/jay-noppone-p/) | [GitHub](https://github.com/jaynopponep)
+
+- **Abrar H.**  
+  [GitHub](https://github.com/dddictionary) | [LinkedIn](https://www.linkedin.com/in/abrarhabib/)
+
 
 
 ## License 📄
