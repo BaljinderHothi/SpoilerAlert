@@ -14,7 +14,6 @@ const CameraStream: React.FC = () => {
                 if (videoRef.current) {
                     videoRef.current.srcObject = stream;
 
-                    // Initialize MediaRecorder for recording
                     const mediaRecorder = new MediaRecorder(stream, {
                         mimeType: "video/webm",
                     });
@@ -43,13 +42,12 @@ const CameraStream: React.FC = () => {
             }
         };
 
-    // Toggle recording
     const toggleRecording = () => {
         if (isRecording) {
             mediaRecorderRef.current?.stop();
             setIsRecording(false);
         } else {
-            setRecordedChunks([]); // Reset recorded chunks
+            setRecordedChunks([]);
             mediaRecorderRef.current?.start();
             setIsRecording(true);
         }
