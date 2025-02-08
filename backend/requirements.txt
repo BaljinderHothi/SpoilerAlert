@@ -1,0 +1,4 @@
+torch~=2.6.0
+ultralytics~=8.3.73
+roboflow~=1.1.53
+python-dotenv~=1.0.1
