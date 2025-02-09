@@ -10,7 +10,7 @@ import {
 const IMGS: string[] = [
   "https://media.istockphoto.com/id/1457889029/photo/group-of-food-with-high-content-of-dietary-fiber-arranged-side-by-side.jpg?s=612x612&w=0&k=20&c=SEyObHsbBsrd1XZlgEg389VT86BMFKZKfKReKyVPAk4=",
   "https://img.freepik.com/free-photo/stew-chicken-with-vegetables-mushrooms_155003-434.jpg",
-  "https://media.istockphoto.com/id/1449032425/photo/shopping-bag-full-of-healthy-food-on-blue.jpg?s=1024x1024&w=is&k=20&c=1O0frg75q_i-00X30b4hr_G_JSwfWEXG40I9RZLyhoY=",
+  "https://i.etsystatic.com/22761104/r/il/3e64e7/2552016467/il_fullxfull.2552016467_cwev.jpg",
   "https://media.istockphoto.com/id/1425232352/photo/expired-organic-bio-waste-mix-vegetables-and-fruits-in-a-huge-container-in-a-rubbish-bin-heap.jpg?s=612x612&w=0&k=20&c=_hIv18ePoswfw6BTJK9j7JMC4mhgXU-GX8rpIEbIJ5s=",
   "https://6850012.fs1.hubspotusercontent-na1.net/hub/6850012/hubfs/00_Content%20Marketing/Blogs/PLM%20and%20Compliance/Feature%20Images/Food_waste_by_Kmpzzz-2325939307.jpg?width=1908&height=1046&name=Food_waste_by_Kmpzzz-2325939307.jpg",
   "https://umaine.edu/sustainability/wp-content/uploads/sites/162/2021/04/Treasure_trove_of_wasted_food_sm2.jpg",
