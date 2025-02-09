@@ -11,15 +11,15 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="w-full sticky top-0 left-0 right-0 z-10 bg-[#FAF9F6]">
+            <div className="w-full sticky top-0 left-0 right-0 z-10 bg-[#f6e3ba]">
                 <div className='max-w-7xl h-16 flex mx-auto px-4 justify-between items-center lg:px-8'>
                 <div className=" flex items-center flex-shrink-0">
                     <Link href="/" className="text-black font-switzer font-bold text-4xl">Spoiler Alert</Link>
                 </div>
                 <div className="hidden md:inline-block">
                     <div className="space-x-4 text-2xl">
-                        <Link href="/safety" className="text-[#415a77] hover:bg-[#d4a373] hover:text-[#fefae0] rounded-xl p-2">Recall Checker</Link>
-                        <Link href="/availability" className="text-[#415a77] hover:bg-[#d4a373] hover:text-[#fefae0] rounded-xl p-2">About the Team</Link>
+                        <Link href="/safety" className="text-[#415a77] hover:bg-[#FF5A5F] hover:text-[#fefae0] rounded-xl p-2">Recall Checker</Link>
+                        <Link href="/availability" className="text-[#415a77] hover:bg-[#FF5A5F] hover:text-[#fefae0] rounded-xl p-2">About the Team</Link>
                     </div>
                 </div>
                 <div className='md:hidden flex items-center'>
