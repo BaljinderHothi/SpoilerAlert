@@ -7,6 +7,7 @@ import { Camera as CameraIcon, Type, Info } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ItemForm } from "@/components/ui/item-form";
 import Camera from "./camera"
+import Sidebar from "./sidebar";
 
 
 
@@ -113,13 +114,10 @@ export default function Test() {
         </div>
 
         {/* First row, second column - Info Card */}
-        <Card className="bg-[#efefef] dark:bg-zinc-900 border-0 h-[572px] rounded-2xl overflow-hidden shadow-none">
-          <CardHeader className="flex flex-row items-center justify-center gap-2 pt-8">
-            <Info className="w-5 h-5 text-zinc-500" />
-            <CardTitle className="text-xl">Information</CardTitle>
-          </CardHeader>
+        <Card className="bg-[#efefef] dark:bg-zinc-900 border-0 h-[572px] rounded-2xl overflow-hidden shadow-none pt-4">
           <CardContent>
             {/* Content will go here */}
+            <Sidebar/>
           </CardContent>
         </Card>
 
