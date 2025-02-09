@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 const CameraStream: React.FC = () => {
     const videoRef = useRef(null);
     const [isRecording, setIsRecording] = useState(false);
-    const mediaRecorderRef = useRef(null);
     const [recordedChunks, setRecordedChunks] = useState([]);
     const [mostFreqPrediction, setMostFreqPrediction] = useState("");
     const [isVideoStreamActive, setIsVideoStreamActive] = useState(false);
@@ -73,14 +72,12 @@ const CameraStream: React.FC = () => {
 
     const toggleRecording = async () => {
         if (isRecording) {
-            mediaRecorderRef.current?.stop();
             setIsRecording(false);
             setIsVideoStreamActive(false);
             setCountdown(0);
             await fetch("http://127.0.0.1:5000/stop_camera");
         } else {
             setRecordedChunks([]);
-            mediaRecorderRef.current?.start();
             setIsRecording(true);
             setIsVideoStreamActive(true);
             setCountdown(6);
