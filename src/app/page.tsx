@@ -1,6 +1,7 @@
 "use client"; // Required for Client Components
 
 import { useEffect, useState } from "react";
+import Hero from './components/hero'
 
 export default function Page() {
   const [data, setData] = useState<any>(null);
@@ -23,8 +24,10 @@ export default function Page() {
 
   return (
     <div>
+      <Hero></Hero>
       <h1>Data from API</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
+      <img></img>
     </div>
   );
 }
