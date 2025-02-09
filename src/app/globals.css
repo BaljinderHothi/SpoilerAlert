@@ -11,5 +11,11 @@ body {
 @layer base {
   :root {
     --radius: 0.5rem;
+    --background: #ffffff
   }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
 }
