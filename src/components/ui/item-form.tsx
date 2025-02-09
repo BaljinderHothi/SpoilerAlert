@@ -16,6 +16,10 @@ export function ItemForm({ onItemNameSubmit }: ItemFormProps) {
     }
   };
 
+  function handleSubmit() {
+    onItemNameSubmit(itemName);
+  }
+
   return (
     <div className="h-full flex items-center">
       <div className="space-y-6 max-w-md w-full mx-auto">
@@ -33,6 +37,7 @@ export function ItemForm({ onItemNameSubmit }: ItemFormProps) {
             The name of your item.
           </p>
         </div>
+        <button className="bg-black absolute text-white p-2 rounded-lg" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );

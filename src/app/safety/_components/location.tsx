@@ -11,7 +11,6 @@ type props = {
 
 export default function LocationInfo({product, city, state}: props) {
     const [data, setData] = useState({occurrence: 0});
-    product = 'carrot'
 
     useEffect(() => {
         async function postCrowdData() {

@@ -1,28 +1,35 @@
 import { useEffect, useState } from "react";
 
-export default function Sidebar() {
+type props = {
+    product: string
+}
+
+export default function Sidebar({product}: props) {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>("");
 
     useEffect(() => {
         const fetchFDAData = async () => {
-            try {
-                const response = await fetch(`http://localhost:3000/api/fda?product="carrot"`);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data");
+            if (product) {
+                try {
+                    const response = await fetch(`http://localhost:3000/api/fda?product=${product}`);
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch data");
+                    }
+                    const result = await response.json();
+                    console.log(result)
+                    setData(result);
+                } catch (err: any) {
+                    setError("Error fetching data: " + err.message);
+                } finally {
+                    setLoading(false);
                 }
-                const result = await response.json();
-                setData(result);
-            } catch (err: any) {
-                setError("Error fetching data: " + err.message);
-            } finally {
-                setLoading(false);
             }
         };
 
         fetchFDAData();
-    }, []);
+    }, [product]);
 
     return (
         <div className="w-96 border-2 bg-white p-4 rounded-lg shadow-md h-[570px] overflow-y-auto">
