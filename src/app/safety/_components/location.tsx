@@ -7,6 +7,8 @@ type Props = {
     product: string;
 };
 
+const url = 'http://spoileralert.nyc'
+
 export default function LocationInfo({ product }: Props) {
     const [data, setData] = useState<{ occurrence: number | null }>({ occurrence: null });
     const { data: locationData, loading, error } = getLocationData();
@@ -23,7 +25,7 @@ export default function LocationInfo({ product }: Props) {
     useEffect(() => {
         async function postCrowdData() {
             if (product && city && state) {
-                const api = "http://localhost:3000/api/postLocation";
+                const api = `/api/postLocation`;
                 const options = {
                     method: "POST",
                     headers: { accept: "application/json" },
@@ -35,7 +37,7 @@ export default function LocationInfo({ product }: Props) {
 
         async function getCrowdData() {
             if (product && city && state) {
-                const api = `http://localhost:3000/api/getLocation?product_name=${product}&city=${city}&state=${state}`;
+                const api = `/api/getLocation?product_name=${product}&city=${city}&state=${state}`;
                 const options = { method: "GET", headers: { accept: "application/json" } };
                 const response = await fetch(api, options);
                 const result = await response.json();
