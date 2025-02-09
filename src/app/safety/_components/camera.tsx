@@ -7,9 +7,22 @@ const CameraStream: React.FC = () => {
     const [isRecording, setIsRecording] = useState(false);
     const mediaRecorderRef = useRef(null);
     const [recordedChunks, setRecordedChunks] = useState([]);
-
+    const [mostFreqPrediction, setMostFreqPrediction] = useState("");
     const videoStreamBackend = "http://127.0.0.1:5000/video_feed"
+    const fetchMostFrequentPrediction = async () => {
+        try {
+            const response = await fetch("http://127.0.0.1:5000/most_frequent_prediction");
+            const data = await response.json();
+            setMostFreqPrediction(data.most_frequent_prediction);
+        } catch (error) {
+            console.error("Error fetching most frequent prediction:", error);
+        }
+    };
 
+    useEffect(() => {
+        const interval = setInterval(fetchMostFrequentPrediction, 1000); // Fetch every second
+        return () => clearInterval(interval);
+    }, []);
     const startCamera = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: { width: CAMERA_WIDTH, height: CAMERA_HEIGHT } });
@@ -78,9 +91,12 @@ const CameraStream: React.FC = () => {
 
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
                 <button onClick={toggleRecording}
-                className="px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-md shadow hover:bg-green-600 transition">
+                        className="px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-md shadow hover:bg-green-600 transition">
                     {isRecording ? "Stop Recording" : "Start Recording"}
                 </button>
+            </div>
+            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-white">
+                SpoilerAlert's Prediction: {mostFreqPrediction}
             </div>
         </div>
     );
