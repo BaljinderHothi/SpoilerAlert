@@ -1,10 +1,13 @@
 "use client";
 
+import Hero from "./components/hero";
 import { Eye, MapPin, Heart } from "lucide-react";
 import dynamic from 'next/dynamic'
+import { BlurFade } from "@/components/magicui/blur-fade";
+/*
 const Hero = dynamic(() => import('./components/hero'), {
   ssr: false  
-})
+})*/
 
 export default function Page() {
   return (
@@ -12,13 +15,16 @@ export default function Page() {
       <Hero />
       <main className="container mx-auto px-4 py-8">
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold mb-4">What is SpoilerAlert?</h2>
-          <br />
-          <p className="text-xl mb-6">
-            SpoilerAlert is a smart tool designed to help you avoid hidden food recalls by using computer vision and real-time FDA recall data to check if a product is safe to buy or consume.
-          </p>
+          <BlurFade delay={0.25} inView>
+            <h2 className="text-3xl font-semibold mb-4">What is SpoilerAlert?</h2>
+            <br />
+            <p className="text-xl mb-6">
+              SpoilerAlert is a smart tool designed to help you avoid hidden food recalls by using computer vision and real-time FDA recall data to check if a product is safe to buy or consume.
+            </p>
+          </BlurFade>
           <br />
           <div className="flex flex-row justify-between items-center gap-5">
+            <BlurFade delay={0.35} inView>
             <div
               className="p-6 w-[300px] h-[180px] ring-2 ring-[#669bbc] rounded-xl flex items-center border-rose-300 border"
               style={{ boxShadow: "0 4px 6px rgb(255, 90, 95)" }}
@@ -38,6 +44,8 @@ export default function Page() {
                 </div>
               </div>
             </div>
+            </BlurFade>
+            <BlurFade delay={0.40} inView>
             <div
               className="p-6 w-[300px] h-[180px] ring-2 ring-[#669bbc] rounded-xl flex items-center border-rose-300 border"
               style={{ boxShadow: "0 4px 6px rgb(255, 90, 95)" }}
@@ -57,6 +65,8 @@ export default function Page() {
                 </div>
               </div>
             </div>
+            </BlurFade>
+            <BlurFade delay={0.40} inView>
             <div
               className="p-6 w-[300px] h-[180px] ring-2 ring-[#669bbc] rounded-xl flex items-center border-rose-300 border"
               style={{ boxShadow: "0 4px 6px rgb(255, 90, 95)" }}
@@ -76,6 +86,7 @@ export default function Page() {
                 </div>
               </div>
             </div>
+            </BlurFade>
           </div>
         </section>
       </main>
