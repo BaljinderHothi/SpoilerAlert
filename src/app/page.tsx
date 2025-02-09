@@ -1,7 +1,10 @@
 "use client";
 
-import Hero from "./components/hero";
 import { Eye, MapPin, Heart } from "lucide-react";
+import dynamic from 'next/dynamic'
+const Hero = dynamic(() => import('./components/hero'), {
+  ssr: false  
+})
 
 export default function Page() {
   return (
