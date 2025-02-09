@@ -1,4 +1,4 @@
-"use client"; // Required for Client Components
+"use client";
 
 import { useEffect, useState } from "react";
 import Hero from './components/hero'
