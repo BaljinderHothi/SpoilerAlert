@@ -72,6 +72,7 @@ const CameraStream: React.FC = () => {
                 playsInline
                 muted
                 style={{width: "100%", maxWidth: "200px", height: "50px"}}
+
             />
             <img src={videoStreamBackend} alt="Mmm Fruits" className="absolute pb-10"/>
 

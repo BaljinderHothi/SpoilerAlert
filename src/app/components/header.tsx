@@ -11,7 +11,7 @@ export default function Header() {
                     <h1>Shop</h1>
                     <RotatingText
                         texts={['In Peace', 'Effectively']}
-                        mainClassName="px-2 sm:px-2 md:px-3 bg-[#669bbc] text-[#ffffff] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                        mainClassName="px-2 sm:px-2 md:px-3 bg-[#e64320] text-[#ffffff] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                         staggerFrom={"first"}
                         initial={{ y: "100%" }}
                         animate={{ y: 0 }}
