@@ -10,27 +10,29 @@ import Camera from "./camera";
 import Sidebar from "./sidebar";
 import LocationInfo from "./location";
 import getLocationData from '../actions'
+import FailSafeCamera from "./failsafecamera";
 
 export default function Test() {
   const [activeTab, setActiveTab] = useState(0);
   const locationData = getLocationData();
   const [detectedObject, setDetectedObject] = useState<string>("");
   const [itemName, setItemName] = useState<string>("");
+  const useFailSafe = true
 
   const handleItemNameSubmit = (newItemName: string) => {
-    setItemName(newItemName);
+    setDetectedObject(newItemName);
   };
 
   const TAB_CONTENT = [
     {
       title: "Camera",
       icon: <CameraIcon className="w-4 h-4 mr-2" />,
-      content: <Camera setObject={setDetectedObject} />,
+      content: useFailSafe ? <FailSafeCamera /> : <Camera setObject={setDetectedObject} />,
     },
     {
       title: "Text",
       icon: <Type className="w-4 h-4 mr-2" />,
-      content: <ItemForm onItemNameSubmit={handleItemNameSubmit} />,
+      content: <ItemForm onItemNameSubmit={handleItemNameSubmit}/>,
     },
   ];
 
@@ -118,7 +120,7 @@ export default function Test() {
         </div>
 
         {/* First row, second column - Info Card */}
-        <Sidebar/>
+        <Sidebar product={detectedObject}/>
             
       </div>
 
