@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import ThemeToggle from "./theme-toggle";
 
 export default function Navbar() {
   return (
@@ -15,7 +14,6 @@ export default function Navbar() {
             </Link>
 
             {/* Theme Toggle */}
-            <ThemeToggle />
           </div>
         </nav>
       </div>

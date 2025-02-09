@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 const CameraStream: React.FC = () => {
     const videoRef = useRef(null);
     const [isRecording, setIsRecording] = useState(false);
-    const mediaRecorderRef = useRef(null);
     const [recordedChunks, setRecordedChunks] = useState([]);
     const [mostFreqPrediction, setMostFreqPrediction] = useState("");
     const [isVideoStreamActive, setIsVideoStreamActive] = useState(false);
@@ -21,7 +20,7 @@ const CameraStream: React.FC = () => {
     };
 
     useEffect(() => {
-        let interval;
+        let interval: NodeJS.Timeout;
         if (isVideoStreamActive) {
             interval = setInterval(fetchMostFrequentPrediction, 1000);
         }
@@ -37,50 +36,14 @@ const CameraStream: React.FC = () => {
         }
     }, [countdown, isRecording]);
 
-    const startCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream;
-
-                const mediaRecorder = new MediaRecorder(stream, {
-                    mimeType: "video/webm",
-                });
-
-                mediaRecorder.ondataavailable = (event) => {
-                    if (event.data.size > 0) {
-                        setRecordedChunks((prev) => [...prev, event.data]);
-                    }
-                };
-
-                mediaRecorder.onstop = () => {
-                    if (recordedChunks.length) {
-                        const blob = new Blob(recordedChunks, {
-                            type: "video/webm",
-                        });
-                        const url = URL.createObjectURL(blob);
-                        console.log("Recorded video blob:", blob);
-                        setRecordedChunks([]);
-                    }
-                };
-
-                mediaRecorderRef.current = mediaRecorder;
-            }
-        } catch (error) {
-            console.error("Error accessing camera:", error);
-        }
-    };
-
     const toggleRecording = async () => {
         if (isRecording) {
-            mediaRecorderRef.current?.stop();
             setIsRecording(false);
             setIsVideoStreamActive(false);
             setCountdown(0);
             await fetch("http://127.0.0.1:5000/stop_camera");
         } else {
             setRecordedChunks([]);
-            mediaRecorderRef.current?.start();
             setIsRecording(true);
             setIsVideoStreamActive(true);
             setCountdown(6);

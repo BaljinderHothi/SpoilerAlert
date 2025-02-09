@@ -6,29 +6,32 @@ import GooeyFilter from "@/components/fancy/gooey-svg-filter";
 import { Camera as CameraIcon, Type, Info } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ItemForm } from "@/components/ui/item-form";
-import Camera from "./camera"
+import Camera from "./camera";
 import Sidebar from "./sidebar";
 import LocationInfo from "./location";
 import getLocationData from '../actions'
-
-
 
 export default function Test() {
   const [activeTab, setActiveTab] = useState(0);
   const locationData = getLocationData();
   const [detectedObject, setDetectedObject] = useState<string>("");
+  const [itemName, setItemName] = useState<string>("");
+
+  const handleItemNameSubmit = (newItemName: string) => {
+    setItemName(newItemName);
+  };
 
   const TAB_CONTENT = [
     {
       title: "Camera",
       icon: <CameraIcon className="w-4 h-4 mr-2" />,
-      content: <Camera setObject={setDetectedObject} />
+      content: <Camera setObject={setDetectedObject} />,
     },
     {
       title: "Text",
       icon: <Type className="w-4 h-4 mr-2" />,
-      content: <ItemForm />
-    }
+      content: <ItemForm onItemNameSubmit={handleItemNameSubmit} />,
+    },
   ];
 
   return (
@@ -39,10 +42,7 @@ export default function Test() {
         <div className="relative h-full mb-8 md:mb-0">
           <GooeyFilter id="gooey-filter" strength={20} />
           <div className="relative h-full">
-            <div
-              className="absolute inset-0"
-            >
-              {/* Background tabs */}
+            <div className="absolute inset-0">
               <div className="flex w-full">
                 {TAB_CONTENT.map((_, index) => (
                   <div key={index} className="relative flex-1 h-12">
@@ -61,8 +61,7 @@ export default function Test() {
                 ))}
               </div>
 
-              {/* Content panel */}
-              <div className="w-full h-[525px] bg-[#efefef] dark:bg-zinc-900 overflow-hidden ">
+              <div className="w-full h-[525px] bg-[#efefef] dark:bg-zinc-900 overflow-hidden">
                 <AnimatePresence mode="popLayout">
                   <motion.div
                     key={activeTab}
@@ -92,7 +91,6 @@ export default function Test() {
               </div>
             </div>
 
-            {/* Interactive text overlay */}
             <div className="relative flex w-full">
               {TAB_CONTENT.map((tab, index) => (
                 <button
@@ -100,13 +98,16 @@ export default function Test() {
                   onClick={() => setActiveTab(index)}
                   className="flex-1 h-12"
                 >
-                  <span className={`
+                  <span
+                    className={`
                     w-full h-full flex items-center justify-center
-                    ${activeTab === index 
-                      ? "text-black dark:text-white" 
-                      : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
+                    ${
+                      activeTab === index
+                        ? "text-black dark:text-white"
+                        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
                     }
-                  `}>
+                  `}
+                  >
                     {tab.icon}
                     {tab.title}
                   </span>

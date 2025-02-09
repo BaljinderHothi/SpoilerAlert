@@ -19,7 +19,7 @@ export default function Navbar() {
                 <div className="hidden md:inline-block">
                     <div className="space-x-4 text-2xl">
                         <Link href="/safety" className="text-black hover:bg-[#FF5A5F] hover:text-[#fefae0] rounded-xl p-2">Recall Checker</Link>
-                        <Link href="/availability" className="text-black hover:bg-[#FF5A5F] hover:text-[#fefae0] rounded-xl p-2">About the Team</Link>
+                        <Link href="/team" className="text-black hover:bg-[#FF5A5F] hover:text-[#fefae0] rounded-xl p-2">About the Team</Link>
                     </div>
                 </div>
                 <div className='md:hidden flex items-center'>
@@ -33,7 +33,7 @@ export default function Navbar() {
                 <div className='md:hidden'>
                     <div className="space-y-1 px-2 pb-3">
                         <Link href="/safety" className="block  text-black hover:bg-[#FAF9F6] hover:text-[#fefae0] rounded-lg p-2">Recall Checker</Link>
-                        <Link href="/availability" className="block text-black hover:bg-[#FAF9F6] hover:text-[#fefae0]  rounded-lg p-2">About the Team</Link>
+                        <Link href="/team" className="block text-black hover:bg-[#FAF9F6] hover:text-[#fefae0]  rounded-lg p-2">About the Team</Link>
                     </div>
                 </div>
             )}
