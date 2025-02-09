@@ -13,7 +13,9 @@ export default {
   			Qwitcher: [
   				'Qwitcher Grypen',
   				'cursive'
-  			]
+  			],
+			slabo: ['Slabo 27px', 'serif'],
+			poppins: ['Poppins', 'sans-serif'],
   		},
   		colors: {
   			background: 'var(--background)',
