@@ -52,7 +52,7 @@ const CameraStream: React.FC = () => {
     };
 
     return (
-        <div className="relative w-[640px] h-[480px] bg-black rounded-lg overflow-hidden">
+        <div className="relative w-[640px] h-[480px] rounded-lg overflow-hidden">
             <video
                 ref={videoRef}
                 autoPlay
