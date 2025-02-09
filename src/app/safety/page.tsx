@@ -35,14 +35,19 @@ export default function Safety() {
                 console.log(result)
             }
         }
+
+        async function getRecallStats() {
+            const options = {method: 'POST', headers: {accept: 'application/json'}, body: JSON.stringify({ username: "example" }),
+        };
+        }
+
         getUserLocationData()
     }, [latitude, longitude]);
-
-    navigator.geolocation.getCurrentPosition(success, error);
 
     return (
         <>
             <Test/>
+            
         </>
     );
 }
