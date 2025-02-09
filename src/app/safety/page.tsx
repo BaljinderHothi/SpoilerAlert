@@ -1,6 +1,5 @@
 // pages/safety.tsx
 'use client'
-import Camera from "./_components/camera";
 import Sidebar from "./_components/sidebar";
 import { useState } from "react";
 import Test from "./_components/test";
