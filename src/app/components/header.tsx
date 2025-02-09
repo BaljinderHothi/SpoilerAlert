@@ -10,7 +10,7 @@ export default function Header() {
                 <div className='flex w-full text-6xl items-center justify-center space-x-5 pb-4 font-bold'>
                     <h1>Shop</h1>
                     <RotatingText
-                        texts={['In Peace', 'Effectively']}
+                        texts={['In Peace', 'Alert', 'Cautiously', 'Aware']}
                         mainClassName="px-2 sm:px-2 md:px-3 bg-[#FF5A5F] text-[#ffffff] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                         staggerFrom={"first"}
                         initial={{ y: "100%" }}
@@ -22,7 +22,7 @@ export default function Header() {
                         rotationInterval={2000}
                     />
                 </div>
-                <h1 className='font-semibold'>Ensure your food is safe and available!</h1>
+                <h1 className='font-semibold'>Ensure your food is safe to enjoy!</h1>
             </header>
         </>
     );
