@@ -8,11 +8,14 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ItemForm } from "@/components/ui/item-form";
 import Camera from "./camera"
 import Sidebar from "./sidebar";
+import LocationInfo from "./location";
+import getLocationData from '../actions'
 
 
 
 export default function Test() {
   const [activeTab, setActiveTab] = useState(0);
+  const locationData = getLocationData();
   const [detectedObject, setDetectedObject] = useState<string>("");
 
   const TAB_CONTENT = [
@@ -31,7 +34,7 @@ export default function Test() {
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       {/* Main grid container */}
-      <div className="w-full max-w-7xl mx-auto px-4 pt-24 grid grid-cols-1 md:grid-cols-[1.3fr,0.7fr] gap-8 md:gap-12 auto-rows-auto">
+      <div className="w-full max-w-7xl mx-auto px-4 pt-24 grid grid-cols-1 md:grid-cols-[1.3fr,0.7fr] gap-8 md:gap-12 auto-rows-auto pb-12">
         {/* First row, first column - Gooey Filter Content */}
         <div className="relative h-full mb-8 md:mb-0">
           <GooeyFilter id="gooey-filter" strength={20} />
@@ -114,13 +117,12 @@ export default function Test() {
         </div>
 
         {/* First row, second column - Info Card */}
-        <Card className="bg-[#efefef] dark:bg-zinc-900 border-0 h-[572px] rounded-2xl overflow-hidden shadow-none pt-4">
-          <CardContent>
-            {/* Content will go here */}
-            <Sidebar/>
-          </CardContent>
-        </Card>
+        <Sidebar/>
+            
+      </div>
 
+      <div className="flex justify-center pt-10">
+        <LocationInfo product={detectedObject} city={locationData.address?.suburb} state={locationData.address?.state}/>
       </div>
     </main>
   );
