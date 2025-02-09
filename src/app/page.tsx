@@ -18,7 +18,7 @@ export default function Page() {
           <div className="flex flex-row justify-between items-center gap-5">
             <div
               className="p-6 w-[300px] h-[180px] ring-2 ring-[#669bbc] rounded-xl flex items-center"
-              style={{ boxShadow: "0 4px 6px rgba(102, 155, 188, 0.5)" }}
+              style={{ boxShadow: "0 4px 6px rgb(255, 90, 95)" }}
             >
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 bg-customSecondary rounded-full flex justify-center items-center">
@@ -37,7 +37,7 @@ export default function Page() {
             </div>
             <div
               className="p-6 w-[300px] h-[180px] ring-2 ring-[#669bbc] rounded-xl flex items-center"
-              style={{ boxShadow: "0 4px 6px rgba(102, 155, 188, 0.5)" }}
+              style={{ boxShadow: "0 4px 6px rgb(255, 90, 95)" }}
             >
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 bg-customSecondary rounded-full flex justify-center items-center">
@@ -56,7 +56,7 @@ export default function Page() {
             </div>
             <div
               className="p-6 w-[300px] h-[180px] ring-2 ring-[#669bbc] rounded-xl flex items-center"
-              style={{ boxShadow: "0 4px 6px rgba(102, 155, 188, 0.5)" }}
+              style={{ boxShadow: "0 4px 6px rgb(255, 90, 95)" }}
             >
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 bg-customSecondary rounded-full flex justify-center items-center">
