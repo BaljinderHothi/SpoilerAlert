@@ -26,12 +26,12 @@ export default function Sidebar() {
     }, []);
 
     return (
-        <div className="w-96 bg-white p-4 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold text-gray-700">FDA Data</h2>
+        <div className="w-96 border-2 bg-white p-4 rounded-lg shadow-md h-[570px] overflow-y-auto">
+            <h2 className="text-lg font-semibold text-gray-700 overflow-y-auto">FDA Data</h2>
             {loading && <p className="text-gray-600 mt-2">Loading...</p>}
             {error && <p className="text-red-500 mt-2">{error}</p>}
             {data && (
-                <div className="mt-2 space-y-4">
+                <div className="mt-2 space-y-4 overflow-y-auto">
                     {data.results.map((item: any, index: number) => (
                         <div
                             key={index}
