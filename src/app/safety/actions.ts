@@ -2,37 +2,59 @@
 import { useState, useEffect } from "react";
 
 export default function getLocationData() {
-    const [latitude, setLatitude] = useState("")
-    const [longitude, setLongitude] = useState("")
-    const [data, setData] = useState({})
-    const ACCESS_TOKEN = "pk.38580c3f69a72023f4dd81db9cc4cb9a"
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
+    const [data, setData] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    function success(position:any) {
-        const lat = position.coords.latitude;
-        const long = position.coords.longitude;
-        setLatitude(lat)
-        setLongitude(long)
-
-    }
-
-    function error() {
-        console.log("Unable to retrieve your location");
+    const ACCESS_TOKEN = process.env.NEXT_PUBLIC_access_token;
+    if (!ACCESS_TOKEN) {
+        console.error("API key is missing. Make sure it's prefixed with NEXT_PUBLIC_");
+        return { data: null, loading: false, error: "API key is missing" };
     }
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(success, error);
+        if (!navigator.geolocation) {
+            setError("Geolocation is not supported by your browser.");
+            setLoading(false);
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const long = position.coords.longitude;
+                setLatitude(lat);
+                setLongitude(long);
+            },
+            () => {
+                setError("Unable to retrieve your location.");
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    useEffect(() => {
         async function getUserLocationData() {
             if (latitude && longitude) {
-                const api = `https://us1.locationiq.com/v1/reverse?format=json&key=${ACCESS_TOKEN}&lat=${latitude}&lon=${longitude}`
-                const options = {method: 'GET', headers: {accept: 'application/json'}};
-                const response = await fetch(api, options)
-                const result = await response.json();
-                setData(result);
-                console.log(result)
+                try {
+                    setLoading(true);
+                    const api = `https://us1.locationiq.com/v1/reverse?format=json&key=${ACCESS_TOKEN}&lat=${latitude}&lon=${longitude}`;
+                    const response = await fetch(api);
+                    const result = await response.json();
+                    setData(result);
+                    console.log("Location data:", result);
+                } catch (err) {
+                    setError("Failed to fetch location data.");
+                    console.error(err);
+                } finally {
+                    setLoading(false);
+                }
             }
         }
-        getUserLocationData()
+        getUserLocationData();
     }, [latitude, longitude]);
 
-    return data
+    return { data, loading, error };
 }
