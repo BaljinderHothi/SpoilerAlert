@@ -11,7 +11,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="w-full sticky top-0 left-0 right-0 z-10 bg-[#fefae0]">
+            <div className="w-full sticky top-0 left-0 right-0 z-10 bg-[#FAF9F6]">
                 <div className='max-w-7xl h-16 flex mx-auto px-4 justify-between items-center lg:px-8'>
                 <div className=" flex items-center flex-shrink-0">
                     <Link href="/" className="text-black font-switzer font-bold text-4xl">Spoiler Alert</Link>
