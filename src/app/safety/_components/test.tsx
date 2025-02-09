@@ -27,7 +27,7 @@ export default function Test() {
     {
       title: "Camera",
       icon: <CameraIcon className="w-4 h-4 mr-2" />,
-      content: useFailSafe ? <FailSafeCamera /> : <Camera setObject={setDetectedObject} />,
+      content: useFailSafe ? <FailSafeCamera setObject={setDetectedObject} /> : <Camera setObject={setDetectedObject} />,
     },
     {
       title: "Text",
@@ -125,7 +125,7 @@ export default function Test() {
       </div>
 
       <div className="flex justify-center pt-10">
-        <LocationInfo product={detectedObject} city={locationData.address?.suburb} state={locationData.address?.state}/>
+        <LocationInfo product={detectedObject}/>
       </div>
     </main>
   );
