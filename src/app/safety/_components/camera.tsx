@@ -7,7 +7,7 @@ const CameraStream: React.FC = () => {
     const [recordedChunks, setRecordedChunks] = useState([]);
     const [mostFreqPrediction, setMostFreqPrediction] = useState("");
     const [isVideoStreamActive, setIsVideoStreamActive] = useState(false);
-
+    const [countdown, setCountdown] = useState(0);
     const videoStreamBackend = "http://127.0.0.1:5000/video_feed";
 
     const fetchMostFrequentPrediction = async () => {
@@ -27,6 +27,15 @@ const CameraStream: React.FC = () => {
         }
         return () => clearInterval(interval);
     }, [isVideoStreamActive]);
+
+    useEffect(() => {
+        if (countdown > 0) {
+            const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+            return () => clearTimeout(timer);
+        } else if (countdown === 0 && isRecording) {
+            toggleRecording();
+        }
+    }, [countdown, isRecording]);
 
     const startCamera = async () => {
         try {
@@ -67,14 +76,14 @@ const CameraStream: React.FC = () => {
             mediaRecorderRef.current?.stop();
             setIsRecording(false);
             setIsVideoStreamActive(false);
-
+            setCountdown(0);
             await fetch("http://127.0.0.1:5000/stop_camera");
         } else {
             setRecordedChunks([]);
             mediaRecorderRef.current?.start();
             setIsRecording(true);
             setIsVideoStreamActive(true);
-
+            setCountdown(6);
             await fetch("http://127.0.0.1:5000/start_camera");
         }
     };
