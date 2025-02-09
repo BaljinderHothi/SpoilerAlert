@@ -37,39 +37,39 @@ const CameraStream: React.FC = () => {
         }
     }, [countdown, isRecording]);
 
-    const startCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream;
-
-                const mediaRecorder = new MediaRecorder(stream, {
-                    mimeType: "video/webm",
-                });
-
-                mediaRecorder.ondataavailable = (event) => {
-                    if (event.data.size > 0) {
-                        setRecordedChunks((prev) => [...prev, event.data]);
-                    }
-                };
-
-                mediaRecorder.onstop = () => {
-                    if (recordedChunks.length) {
-                        const blob = new Blob(recordedChunks, {
-                            type: "video/webm",
-                        });
-                        const url = URL.createObjectURL(blob);
-                        console.log("Recorded video blob:", blob);
-                        setRecordedChunks([]);
-                    }
-                };
-
-                mediaRecorderRef.current = mediaRecorder;
-            }
-        } catch (error) {
-            console.error("Error accessing camera:", error);
-        }
-    };
+    // const startCamera = async () => {
+    //     try {
+    //         const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
+    //         if (videoRef.current) {
+    //             videoRef.current.srcObject = stream;
+    //
+    //             const mediaRecorder = new MediaRecorder(stream, {
+    //                 mimeType: "video/webm",
+    //             });
+    //
+    //             mediaRecorder.ondataavailable = (event) => {
+    //                 if (event.data.size > 0) {
+    //                     setRecordedChunks((prev) => [...prev, event.data]);
+    //                 }
+    //             };
+    //
+    //             mediaRecorder.onstop = () => {
+    //                 if (recordedChunks.length) {
+    //                     const blob = new Blob(recordedChunks, {
+    //                         type: "video/webm",
+    //                     });
+    //                     const url = URL.createObjectURL(blob);
+    //                     console.log("Recorded video blob:", blob);
+    //                     setRecordedChunks([]);
+    //                 }
+    //             };
+    //
+    //             mediaRecorderRef.current = mediaRecorder;
+    //         }
+    //     } catch (error) {
+    //         console.error("Error accessing camera:", error);
+    //     }
+    // };
 
     const toggleRecording = async () => {
         if (isRecording) {
