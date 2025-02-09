@@ -1,10 +1,7 @@
-// pages/safety.tsx
 'use client'
 import { useState, useEffect } from "react";
-import Test from "./_components/test";
 
-export default function Safety() {
-    const [detectedObject, setDetectedObject] = useState<string>("");
+export default function getLocationData() {
     const [latitude, setLatitude] = useState("")
     const [longitude, setLongitude] = useState("")
     const [data, setData] = useState({})
@@ -22,7 +19,6 @@ export default function Safety() {
         console.log("Unable to retrieve your location");
     }
 
-
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(success, error);
         async function getUserLocationData() {
@@ -35,19 +31,8 @@ export default function Safety() {
                 console.log(result)
             }
         }
-
-        async function getRecallStats() {
-            const options = {method: 'POST', headers: {accept: 'application/json'}, body: JSON.stringify({ username: "example" }),
-        };
-        }
-
         getUserLocationData()
     }, [latitude, longitude]);
 
-    return (
-        <>
-            <Test/>
-            
-        </>
-    );
+    return data
 }
