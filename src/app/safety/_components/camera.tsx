@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const CAMERA_WIDTH = 640;
-const CAMERA_HEIGHT = 480;
+    // const CAMERA_WIDTH = 640;
+    // const CAMERA_HEIGHT = 480;
 const CameraStream: React.FC = () => {
     const videoRef = useRef(null);
     const [isRecording, setIsRecording] = useState(false);
@@ -55,15 +55,15 @@ const CameraStream: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        startCamera()
-            .then(() => {
-                console.log("Camera started");
-            })
-            .catch((error) => {
-                console.error("Error with camera:", error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     startCamera()
+    //         .then(() => {
+    //             console.log("Camera started");
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error with camera:", error);
+    //         });
+    // }, []);
     return (
         <div className="relative w-[640px] h-[480px] bg-black rounded-lg overflow-hidden">
             <video
@@ -71,9 +71,10 @@ const CameraStream: React.FC = () => {
                 autoPlay
                 playsInline
                 muted
-                style={{width: "100%", maxWidth: "200", height: "200px"}}
+                style={{width: "100%", maxWidth: "200px", height: "50px"}}
+
             />
-            <img src={videoStreamBackend} alt="Mmm Fruits"/>
+            <img src={videoStreamBackend} alt="Mmm Fruits" className="absolute pb-10"/>
 
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
                 <button onClick={toggleRecording}
