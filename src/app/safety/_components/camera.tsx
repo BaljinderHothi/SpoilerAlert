@@ -21,7 +21,7 @@ const CameraStream: React.FC = () => {
     };
 
     useEffect(() => {
-        let interval;
+        let interval: NodeJS.Timeout;
         if (isVideoStreamActive) {
             interval = setInterval(fetchMostFrequentPrediction, 1000);
         }
