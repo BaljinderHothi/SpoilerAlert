@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// const CAMERA_WIDTH = 640;
-// const CAMERA_HEIGHT = 480;
+const CAMERA_WIDTH = 640;
+const CAMERA_HEIGHT = 480;
 const CameraStream: React.FC = () => {
     const videoRef = useRef(null);
     const [isRecording, setIsRecording] = useState(false);
@@ -66,13 +66,12 @@ const CameraStream: React.FC = () => {
     }, []);
     return (
         <div className="relative w-[640px] h-[480px] bg-black rounded-lg overflow-hidden">
-            <h2>Live Camera Stream</h2>
             <video
                 ref={videoRef}
                 autoPlay
                 playsInline
                 muted
-                style={{width: "100%", maxWidth: "640px", height: "auto"}}
+                style={{width: "100%", maxWidth: "200", height: "200px"}}
             />
             <img src={videoStreamBackend} alt="Mmm Fruits"/>
 
