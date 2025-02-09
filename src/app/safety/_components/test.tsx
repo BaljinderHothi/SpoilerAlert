@@ -6,7 +6,7 @@ import GooeyFilter from "@/components/fancy/gooey-svg-filter";
 import { Camera as CameraIcon, Type, Info } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ItemForm } from "@/components/ui/item-form";
-// import Camera from "./camera";
+import Camera from "./camera";
 import Sidebar from "./sidebar";
 
 export default function Test() {
@@ -22,7 +22,7 @@ export default function Test() {
     {
       title: "Camera",
       icon: <CameraIcon className="w-4 h-4 mr-2" />,
-      // content: <Camera setObject={setDetectedObject} />,
+      content: <Camera setObject={setDetectedObject} />,
     },
     {
       title: "Text",
