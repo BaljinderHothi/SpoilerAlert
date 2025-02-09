@@ -1,6 +1,7 @@
 'use client'
 import Link  from "next/link"
 import { useState } from 'react';
+import { Salad } from 'lucide-react';
 
 export default function Navbar() {
     const [isToggle, setIsToggle] = useState(false);
@@ -13,9 +14,13 @@ export default function Navbar() {
         <>
             <div className="w-full sticky top-0 left-0 right-0 z-10 bg-[#f6e3ba]">
                 <div className='max-w-7xl h-16 flex mx-auto px-4 justify-between items-center lg:px-8'>
-                <div className=" flex items-center flex-shrink-0">
-                    <Link href="/" className="text-black font-slabo font-bold text-3xl">Spoiler Alert</Link>
+                <div className="flex items-center flex-shrink-0">
+                    <Link href="/" className="flex items-center gap-3 text-black font-slabo font-bold text-4xl tracking-wide hover:text-gray-600 transition-all">
+                        <Salad className="h-12 w-12 text-green-600" />
+                        <p>Spoiler Alert</p>
+                    </Link>
                 </div>
+
                 <div className="hidden md:inline-block">
                     <div className="space-x-4 text-2xl">
                         <Link href="/safety" className="text-black hover:bg-[#FF5A5F] hover:text-[#fefae0] rounded-xl p-2">Recall Checker</Link>
