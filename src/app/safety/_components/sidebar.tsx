@@ -9,11 +9,13 @@ export default function Sidebar({product}: props) {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>("");
 
+    const url = 'http://spoileralert.nyc'
+
     useEffect(() => {
         const fetchFDAData = async () => {
             if (product) {
                 try {
-                    const response = await fetch(`http://localhost:3000/api/fda?product=${product}`);
+                    const response = await fetch(`${url}/api/fda?product=${product}`);
                     if (!response.ok) {
                         throw new Error("Failed to fetch data");
                     }
