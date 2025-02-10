@@ -23,7 +23,14 @@ interface FDAResult {
 }
 
 export async function GET(request: Request) {
-  const fda_key = process.env.fda_key
+  const fda_key = process.env.NEXT_PUBLIC_fda_key
+  if (!fda_key) {
+    console.error('Error: FDA API key is missing. Ensure NEXT_PUBLIC_fda_key is set.')
+  } else {
+    console.log('FDA key is available and being used.')
+  }
+
+  // production should be NEXT_PUBLIC_fda_key
   const { searchParams } = new URL(request.url)
   
   const productName = searchParams.get('product') || ''
@@ -38,13 +45,13 @@ export async function GET(request: Request) {
   const limit = 10
   
   const url = `https://api.fda.gov/food/enforcement.json?api_key=${fda_key}&search=${search_params}&limit=${limit}`
-  
+  console.log(fda_key)
   try {
     const response = await fetch(url)
     const data: FDAResponse = await response.json()
     return parseData(data)
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch FDA data' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to fetch FDA data internally' }, { status: 500 })
   }
 }
 

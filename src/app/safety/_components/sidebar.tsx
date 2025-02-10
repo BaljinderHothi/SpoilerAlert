@@ -15,6 +15,7 @@ export default function Sidebar({ product }: Props) {
         try {
           const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
           const response = await fetch(`${baseUrl}/api/fda?product=${encodeURIComponent(product)}`);
+          //const response = await fetch(`/api/fda?product=${encodeURIComponent(product)}`);
           if (!response.ok) {
             throw new Error("Failed to fetch data");
           }
