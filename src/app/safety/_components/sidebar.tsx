@@ -9,18 +9,16 @@ export default function Sidebar({ product }: Props) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
-  const baseUrl = "https://spoiler-alert-baljinderhothis-projects.vercel.app";
-
   useEffect(() => {
     const fetchFDAData = async () => {
       if (product) {
         try {
+          const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
           const response = await fetch(`${baseUrl}/api/fda?product=${encodeURIComponent(product)}`);
           if (!response.ok) {
             throw new Error("Failed to fetch data");
           }
           const result = await response.json();
-          console.log(result);
           setData(result);
         } catch (err: any) {
           setError("Error fetching data: " + err.message);
@@ -41,10 +39,7 @@ export default function Sidebar({ product }: Props) {
       {data && data.results && (
         <div className="mt-2 space-y-4">
           {data.results.map((item: any, index: number) => (
-            <div
-              key={index}
-              className="p-4 border rounded-lg shadow-sm bg-gray-50 hover:bg-gray-100"
-            >
+            <div key={index} className="p-4 border rounded-lg shadow-sm bg-gray-50 hover:bg-gray-100">
               <h3 className="text-lg font-medium text-gray-800">{item.firm}</h3>
               <p className="text-sm text-gray-600">{item.date}</p>
               <div className="mt-2">
